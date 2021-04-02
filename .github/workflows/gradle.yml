@@ -38,6 +38,10 @@ jobs:
       run: chmod +x gradlew
     - name: Test with Gradle
       run: ./gradlew test
+    - uses: actions/upload-artifact@v2
+      with:
+        name: test-artifact
+        path: build/reports
   Assemble:
     needs: [Compile, Test]
     runs-on: ubuntu-latest
