@@ -25,6 +25,7 @@ jobs:
     - name: Compile with Gradle
       run: ./gradlew compileJava
   Test:
+    needs: Compile
     runs-on: ubuntu-latest
 
       steps:
@@ -37,8 +38,8 @@ jobs:
           run: chmod +x gradlew
         - name: Test with Gradle
           run: ./gradlew test
-    needs: Compile
   Assemble:
+    needs: [Compile, Test]
     runs-on: ubuntu-latest
 
       steps:
@@ -51,4 +52,3 @@ jobs:
           run: chmod +x gradlew
         - name: Assemble with Gradle
           run: ./gradlew assemble
-    needs: [Compile, Test]
