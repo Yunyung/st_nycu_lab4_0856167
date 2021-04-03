@@ -61,6 +61,6 @@ jobs:
       - name: Assemble with Gradle
         run: ./gradlew assemble
       - uses: actions/upload-artifact@v2
-          with:
-            name: assembleJar
-            path: build/libs
+        with:
+          name: assembleJar
+          path: build/libs
