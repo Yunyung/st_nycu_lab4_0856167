@@ -63,4 +63,21 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: assembleJar
-          path: build/libs
+          path: build/libs/*.jar
+
+  Release:
+    needs: [Compile, Test, Assemble]
+    runs-on: ubuntu-latest
+
+    # automate release jar file when push is a tag pushed events
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/download-artifact@v2
+      - with:
+          name: assembleJar
+      - name: Release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: ./*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
