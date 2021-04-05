@@ -43,11 +43,11 @@ jobs:
 
     steps:
       - uses: actions/cache@v2
-          with:
-            path: ./**
-            key: ${{ runner.os }}-gradle-${{ hashFiles('**') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
+        with:
+          path: ./**
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Test with Gradle
         run: ./gradlew test
       - uses: actions/upload-artifact@v2
@@ -62,11 +62,11 @@ jobs:
 
     steps:
       - uses: actions/cache@v2
-          with:
-            path: ~/**
-            key: ${{ runner.os }}-gradle-${{ hashFiles('**') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
+        with:
+          path: ~/**
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - name: Assemble with Gradle
         run: ./gradlew assemble
       - uses: actions/upload-artifact@v2
