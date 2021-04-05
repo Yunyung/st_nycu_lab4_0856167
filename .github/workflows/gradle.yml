@@ -85,9 +85,7 @@ jobs:
         with:
           name: assembleJar
       - name: print current working directory
-        run: |
-          ls ./
-          ls ~/
+        run: ls ./
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
